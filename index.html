@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DriveGhana — Rent A Car Or Share Your Ride</title>
+  <meta name="description" content="DriveGhana: self-drive rentals, airport pickups, chauffeur services and peer-to-peer ride sharing across Ghana." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="navbar" id="top">
+    <div class="container nav-inner">
+      <a href="#top" class="logo" aria-label="DriveGhana home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h-2v-4l2-5h12l3 5v4h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M9.5 17h5"/></svg>
+        </span>
+        <span class="logo-text">Drive<span class="logo-accent">Ghana</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#services">Services</a>
+        <a href="#fleet">Our Fleet</a>
+        <a href="#share">Share A Ride</a>
+        <a href="#destinations">Destinations</a>
+        <a href="#newsletter">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <a href="#fleet" class="btn btn-primary nav-cta">Book Now</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero">
+    <img class="hero-bg" src="images/hero-woman-car-window.png" alt="Happy woman leaning out of a car window on the open road" />
+    <img class="hero-corner" src="images/header-couple-road-trip.png" alt="Couple enjoying a road trip together" />
+    <div class="hero-overlay"></div>
+
+    <div class="container hero-content">
+      <h1 class="hero-title">Go Anywhere,<br />Anytime</h1>
+      <p class="hero-badge">Wheels ready <span class="hero-badge-highlight">in minutes</span> — not days</p>
+    </div>
+
+    <!-- Floating search / booking bar -->
+    <div class="container search-wrap">
+      <form class="search-bar" aria-label="Search for a rental car" onsubmit="return false;">
+        <div class="search-field">
+          <span class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          </span>
+          <div class="search-field-text">
+            <label for="pickupLocation">Pick-up Location</label>
+            <input id="pickupLocation" type="text" placeholder="Accra, Kumasi, Takoradi…" />
+          </div>
+        </div>
+        <div class="search-divider" aria-hidden="true"></div>
+        <div class="search-field">
+          <span class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </span>
+          <div class="search-field-text">
+            <label for="pickupDate">Pick-up Date</label>
+            <input id="pickupDate" type="date" />
+          </div>
+        </div>
+        <div class="search-divider" aria-hidden="true"></div>
+        <div class="search-field">
+          <span class="search-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          </span>
+          <div class="search-field-text">
+            <label for="returnDate">Return Date</label>
+            <input id="returnDate" type="date" />
+          </div>
+        </div>
+        <button type="submit" class="search-btn" aria-label="Search available cars">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ WHAT WE DO ============ -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-head">
+        <h2>What We Do</h2>
+        <span class="head-underline" aria-hidden="true"></span>
+      </div>
+
+      <div class="services-grid">
+        <article class="service-card">
+          <div class="service-photo">
+            <img src="images/circle-rental-car-keys.png" alt="Agent handing over rental car keys beside a sedan" />
+          </div>
+          <h3>Self-Drive Rentals</h3>
+          <p>Pick from hundreds of inspected vehicles and hit the road on your own schedule. Flexible daily, weekly and monthly plans with no hidden fees.</p>
+          <a href="#fleet" class="btn btn-primary btn-sm">Learn More</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-photo">
+            <img src="images/circle-airport-pickup-luggage.png" alt="Traveler with luggage waiting for an airport pickup" />
+          </div>
+          <h3>Airport Pickups</h3>
+          <p>Land, relax and roll. A friendly driver meets you at arrivals with a name board, helps with your bags and gets you to your door comfortably.</p>
+          <a href="#fleet" class="btn btn-primary btn-sm">Learn More</a>
+        </article>
+
+        <article class="service-card">
+          <div class="service-photo">
+            <img src="images/circle-chauffeur-driver.png" alt="Uniformed chauffeur standing beside an executive sedan" />
+          </div>
+          <h3>Chauffeur Service</h3>
+          <p>Arrive polished. Professionally trained chauffeurs and executive vehicles for meetings, weddings, events and city-to-city travel.</p>
+          <a href="#fleet" class="btn btn-primary btn-sm">Learn More</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CATEGORY ROW ============ -->
+  <section class="section section-gray" id="categories">
+    <div class="container">
+      <div class="section-head">
+        <h2>Choose Your Type Of Car</h2>
+        <span class="head-underline" aria-hidden="true"></span>
+      </div>
+
+      <div class="category-row" id="categoryRow">
+        <button class="category-tile active" type="button">
+          <img src="images/category-sedan.png" alt="Sedan studio photo" />
+          <span>Sedan</span>
+        </button>
+        <button class="category-tile" type="button">
+          <img src="images/category-suv.png" alt="SUV studio photo" />
+          <span>SUV</span>
+        </button>
+        <button class="category-tile" type="button">
+          <img src="images/category-minivan-bus.png" alt="Minivan and bus studio photo" />
+          <span>Minivan &amp; Bus</span>
+        </button>
+        <button class="category-tile" type="button">
+          <img src="images/category-pickup.png" alt="Pickup truck studio photo" />
+          <span>Pickup</span>
+        </button>
+        <button class="category-tile" type="button">
+          <img src="images/category-luxury.png" alt="Luxury car studio photo" />
+          <span>Luxury</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FLEET GRID ============ -->
+  <section class="section" id="fleet">
+    <div class="container">
+      <div class="section-head">
+        <h2>Our Latest Fleet</h2>
+        <span class="head-underline" aria-hidden="true"></span>
+      </div>
+
+      <div class="fleet-grid">
+        <article class="fleet-card">
+          <div class="fleet-photo"><img src="images/category-sedan.png" alt="Comfort sedan available for rent" /></div>
+          <div class="fleet-body">
+            <h3>Kumasi Cruiser Sedan</h3>
+            <ul class="spec-chips">
+              <li>5 Seats</li><li>Automatic</li><li>Petrol</li><li>A/C</li>
+            </ul>
+            <div class="fleet-foot">
+              <p class="price">₵450<span>/day</span></p>
+              <a href="#top" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="fleet-card">
+          <div class="fleet-photo"><img src="images/category-suv.png" alt="Family SUV available for rent" /></div>
+          <div class="fleet-body">
+            <h3>Savanna Trail SUV</h3>
+            <ul class="spec-chips">
+              <li>7 Seats</li><li>Automatic</li><li>Diesel</li><li>A/C</li>
+            </ul>
+            <div class="fleet-foot">
+              <p class="price">₵720<span>/day</span></p>
+              <a href="#top" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="fleet-card">
+          <div class="fleet-photo"><img src="images/category-minivan-bus.png" alt="Group minivan available for rent" /></div>
+          <div class="fleet-body">
+            <h3>Coastline Family Van</h3>
+            <ul class="spec-chips">
+              <li>12 Seats</li><li>Manual</li><li>Diesel</li><li>A/C</li>
+            </ul>
+            <div class="fleet-foot">
+              <p class="price">₵950<span>/day</span></p>
+              <a href="#top" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="fleet-card">
+          <div class="fleet-photo"><img src="images/category-pickup.png" alt="Rugged pickup truck available for rent" /></div>
+          <div class="fleet-body">
+            <h3>Volta Workhorse Pickup</h3>
+            <ul class="spec-chips">
+              <li>5 Seats</li><li>Manual</li><li>Diesel</li><li>4x4</li>
+            </ul>
+            <div class="fleet-foot">
+              <p class="price">₵680<span>/day</span></p>
+              <a href="#top" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="fleet-card">
+          <div class="fleet-photo"><img src="images/category-luxury.png" alt="Executive luxury car available for rent" /></div>
+          <div class="fleet-body">
+            <h3>Accra Executive Class</h3>
+            <ul class="spec-chips">
+              <li>4 Seats</li><li>Automatic</li><li>Hybrid</li><li>Leather</li>
+            </ul>
+            <div class="fleet-foot">
+              <p class="price">₵1,400<span>/day</span></p>
+              <a href="#top" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="fleet-card">
+          <div class="fleet-photo"><img src="images/header-couple-road-trip.png" alt="Weekend getaway rental car" /></div>
+          <div class="fleet-body">
+            <h3>Weekend Getaway Special</h3>
+            <ul class="spec-chips">
+              <li>5 Seats</li><li>Automatic</li><li>Petrol</li><li>A/C</li>
+            </ul>
+            <div class="fleet-foot">
+              <p class="price">₵390<span>/day</span></p>
+              <a href="#top" class="btn btn-primary btn-sm">Book Now</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIALS ============ -->
+  <section class="section section-gray" id="testimonials">
+    <div class="container">
+      <div class="section-head">
+        <h2>Stories From Our Customers</h2>
+        <span class="head-underline" aria-hidden="true"></span>
+      </div>
+
+      <div class="testimonial-row">
+        <blockquote class="testimonial-card">
+          <div class="stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+          <p>The booking took less than five minutes and the car was spotless when I picked it up. I drove from Accra to Cape Coast without a single worry — even the roadside support line answered on the first ring.</p>
+          <footer>
+            <strong>Abena O.</strong>
+            <span>Marketing Manager, Accra</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card">
+          <div class="stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+          <p>I listed my SUV on the platform three months ago and it now pays for its own insurance and more. The team screens every renter, so I never feel nervous handing over the keys.</p>
+          <footer>
+            <strong>Kofi A.</strong>
+            <span>Car Owner, Kumasi</span>
+          </footer>
+        </blockquote>
+
+        <blockquote class="testimonial-card">
+          <div class="stars" aria-label="Rated 5 out of 5 stars">★★★★★</div>
+          <p>Our chauffeur arrived early, dressed sharp, and knew every shortcut through the city. It made our wedding day travel completely stress-free. We will absolutely book again for the holidays.</p>
+          <footer>
+            <strong>Efua &amp; Daniel</strong>
+            <span>Newlyweds, Takoradi</span>
+          </footer>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TEAL BAND: QUICK BOOKING ============ -->
+  <section class="teal-band" id="booking">
+    <div class="container split">
+      <div class="split-text on-teal">
+        <h2>Reserve A Car In A Few Taps</h2>
+        <p>No paperwork queues, no phone tag. Our booking flow was built for busy people who just want to get moving.</p>
+        <ol class="steps">
+          <li><span>1</span> Choose your pick-up city and dates</li>
+          <li><span>2</span> Compare verified cars and transparent prices</li>
+          <li><span>3</span> Pay securely and collect your keys</li>
+        </ol>
+        <a href="#fleet" class="btn btn-light">Start Booking</a>
+      </div>
+      <div class="split-photo">
+        <img src="images/booking-smartphone-car.png" alt="Hands booking a ride on a smartphone inside a car" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VIDEO-STYLE SECTION ============ -->
+  <section class="section" id="video">
+    <div class="container">
+      <div class="section-head">
+        <h2>See Where The Road Can Take You</h2>
+        <span class="head-underline" aria-hidden="true"></span>
+      </div>
+      <div class="video-thumb">
+        <img src="images/video-beach-couple-sunset.png" alt="Couple jumping for joy on a beach at sunset" />
+        <button class="play-btn" type="button" aria-label="Play brand video">
+          <svg viewBox="0 0 24 24" width="30" height="30" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAMILY TRIP + WHY CHOOSE US ============ -->
+  <section class="section section-gray" id="why">
+    <div class="container split">
+      <div class="split-photo split-photo-stack">
+        <img class="photo-main" src="images/family-road-trip-beach-ball.png" alt="Child in the back seat holding a beach ball on a family road trip" />
+        <img class="photo-small" src="images/share-ride-man-headphones.png" alt="Man with headphones relaxing in his car" />
+      </div>
+      <div class="split-text">
+        <h2 class="teal-heading">Why Choose Us</h2>
+        <p>Every trip is backed by real people and real protection, so all that's left for you is the fun part — the drive itself.</p>
+        <ul class="check-list">
+          <li>Every vehicle inspected before each and every rental</li>
+          <li>Comprehensive insurance bundled into your price</li>
+          <li>24/7 roadside assistance anywhere in the country</li>
+          <li>Clear pricing — the number you see is the number you pay</li>
+        </ul>
+        <a href="#fleet" class="btn btn-primary">Browse The Fleet</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SHARE YOUR RIDE ============ -->
+  <section class="section" id="share">
+    <div class="container split">
+      <div class="split-text">
+        <h2 class="teal-heading">Own A Car? Turn It Into Income</h2>
+        <p>Your car spends most of the week parked. List it with us and let it earn while you don't need it. You set the calendar, the price floor and the house rules — we handle vetting, payments and insurance cover for every trip.</p>
+        <p>Owners in our community earn an average of ₵2,800 a month per vehicle.</p>
+        <a href="#newsletter" class="btn btn-primary">List Your Car</a>
+      </div>
+      <div class="split-photo photo-decor">
+        <img src="images/share-ride-couple-laughing.png" alt="Couple laughing together in a shared ride" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ DESTINATIONS ============ -->
+  <section class="section section-gray" id="destinations">
+    <div class="container">
+      <div class="section-head">
+        <h2>Explore Ghana's Favourite Escapes</h2>
+        <span class="head-underline" aria-hidden="true"></span>
+      </div>
+
+      <div class="dest-grid">
+        <article class="dest-card">
+          <img src="images/destination-elephant-savanna.png" alt="Elephant walking across the savanna at Mole" />
+          <div class="dest-body">
+            <h3>Mole Savanna Safari</h3>
+            <p>Watch elephants roam at golden hour on Ghana's largest wildlife reserve.</p>
+            <a href="#fleet" class="text-link">Plan A Trip →</a>
+          </div>
+        </article>
+
+        <article class="dest-card">
+          <img src="images/destination-stilt-village.png" alt="Stilt village standing over calm lake water" />
+          <div class="dest-body">
+            <h3>Nzulezo Stilt Village</h3>
+            <p>Glide by canoe to a centuries-old village built entirely above the water.</p>
+            <a href="#fleet" class="text-link">Plan A Trip →</a>
+          </div>
+        </article>
+
+        <article class="dest-card">
+          <img src="images/destination-rainforest-waterfall.png" alt="Waterfall pouring through lush rainforest" />
+          <div class="dest-body">
+            <h3>Wli Rainforest Falls</h3>
+            <p>Hike shaded forest trails to the tallest waterfall in West Africa.</p>
+            <a href="#fleet" class="text-link">Plan A Trip →</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="section" id="newsletter">
+    <div class="container split newsletter-split">
+      <div class="split-photo">
+        <img src="images/newsletter-woman-driver-window.png" alt="Smiling woman at the wheel with her window down" />
+      </div>
+      <div class="newsletter-panel">
+        <h2>Get Member-Only Deals First</h2>
+        <p>Join the mailing list for seasonal discounts, new fleet arrivals and road-trip guides. One email a month, zero spam.</p>
+        <form class="newsletter-form" onsubmit="return false;">
+          <input type="email" placeholder="Your email address" aria-label="Email address" required />
+          <button type="submit" class="btn btn-dark">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div class="footer-col footer-brand">
+        <a href="#top" class="logo logo-light">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h-2v-4l2-5h12l3 5v4h-2"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/><path d="M9.5 17h5"/></svg>
+          </span>
+          <span class="logo-text">Drive<span class="logo-accent">Ghana</span></span>
+        </a>
+        <p>Freedom on four wheels — rentals, chauffeurs and ride sharing built for Ghana's roads.</p>
+        <div class="socials">
+          <a href="#top" aria-label="Facebook"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M13.5 21v-8h2.7l.4-3h-3.1V8.1c0-.9.3-1.5 1.6-1.5h1.6V4c-.3 0-1.2-.1-2.3-.1-2.3 0-3.9 1.4-3.9 4v2.1H8v3h2.5v8h3z"/></svg></a>
+          <a href="#top" aria-label="Instagram"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="#top" aria-label="X / Twitter"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.9 3H22l-7.6 8.7L23 21h-6.8l-5.3-6.4L4.8 21H1.7l8.1-9.3L1 3h7l4.8 5.8L18.9 3zm-1.2 16h1.9L7.1 4.9H5L17.7 19z"/></svg></a>
+          <a href="#top" aria-label="WhatsApp"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.6 1.1 1.4 1.9 2.5 2.5.3.2.5.1.7-.1l.8-1c.2-.3.4-.2.7-.1l1.9.9c.3.2.5.2.5.4 0 .1 0 .7-.2 1.5z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="#services">What We Do</a></li>
+          <li><a href="#fleet">Our Fleet</a></li>
+          <li><a href="#destinations">Destinations</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Self-Drive Rentals</a></li>
+          <li><a href="#services">Airport Pickups</a></li>
+          <li><a href="#services">Chauffeur Service</a></li>
+          <li><a href="#share">List Your Car</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get In Touch</h4>
+        <ul class="contact-list">
+          <li>14 Liberation Road, Accra, Ghana</li>
+          <li>+233 20 000 0000</li>
+          <li>hello@driveghana.example</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container">
+        <p>© 2026 DriveGhana. All rights reserved. Drive safe out there.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============ FLOATING CHAT ============ -->
+  <a href="#newsletter" class="chat-fab" aria-label="Chat with us">
+    <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+  </a>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
