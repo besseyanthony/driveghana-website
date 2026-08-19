@@ -2,36 +2,61 @@
 
 ## Cursor Cloud specific instructions
 
-This repository is a **fully static website** (the "DriveGhana" car-rental landing page). There is
-no package manager, no build system, no backend, and no automated tests or linters configured.
-Structure: `index.html` (single page), `css/styles.css`, `js/script.js`, and `images/`. It is
-deployed as-is via GitHub Pages (`.nojekyll` disables Jekyll processing).
+DriveGhana is a car-rental site made of two parts:
 
-### Running it (development)
+- **Frontend** — `index.html`, `css/styles.css` and ES modules under `js/`, bundled by **Vite**.
+  It is a single page; there is no framework and no client-side router.
+- **Backend** — an **Express** JSON API under `server/`, mounted entirely under `/api`.
+- **`shared/`** — date, pricing and validation logic imported by *both* sides, so a quote shown
+  in the browser always matches the total the API stores. Changing a rule here changes both.
 
-Serve the repository root over HTTP and open the page in a browser — do NOT open `index.html`
-via the `file://` protocol, because relative asset paths and some browser behaviors differ:
+Standard commands live in the `scripts` block of `package.json` (`dev`, `build`, `start`, `test`,
+`lint`). Notes below cover only what those commands don't make obvious.
 
-```
-python3 -m http.server 8000
-# then open http://localhost:8000/
-```
+### Running it
 
-Any static file server works (`python3 -m http.server`, `npx serve`, etc.); Python 3 is
-preinstalled, so it needs no dependency install. There is no hot-reload — refresh the browser
-after editing files.
+`npm run dev` starts **two** processes via `concurrently`:
 
-### Build / lint / test
+| Process | Port | Notes |
+| --- | --- | --- |
+| Vite dev server (`dev:web`) | 5173 | Open this one. Proxies `/api` → 3001. |
+| Express API (`dev:api`) | 3001 | `node --watch`; restarts on any file change under `server/`. |
 
-- **Build:** none. The files are served directly; there is nothing to compile.
-- **Lint / test:** no linter or test suite exists in this repo. If asked to add checks, none are
-  currently wired up.
+Browse the site at `http://localhost:5173` — **not** 3001. The API has no HTML to serve in dev; the
+Vite proxy (configured in `vite.config.js`) is what joins the two halves. Override the proxy target
+with `API_PROXY_TARGET` if you run the API elsewhere.
 
-### Behavior notes (non-obvious)
+`npm start` is the production shape instead: it sets `NODE_ENV=production` so Express additionally
+serves the built frontend from `dist/`, making port 3001 self-sufficient. It requires a prior
+`npm run build`, and it will warn rather than fail if `dist/` is missing.
 
-- `js/script.js` sets the Pick-up/Return date inputs on page load (today and today+3), toggles a
-  single active car-category tile on click, drives the mobile nav toggle, and runs an
-  `IntersectionObserver` scroll-reveal animation. These require the page to be loaded in a browser
-  to run; a plain `curl` of `index.html` will not execute them.
-- The booking search `<form>` uses `onsubmit="return false;"` — it is a non-functional UI demo and
-  does not submit anywhere.
+### Gotchas worth knowing
+
+- **The API is optional at runtime.** Every fetch failure is caught and shown as a friendly status
+  message, because this repo is also published as plain static files to GitHub Pages (`.nojekyll`),
+  where no backend exists. Keep that graceful degradation intact — don't let a failed `/api` call
+  break the page.
+- **Frontend imports must stay natively resolvable**: relative paths with explicit `.js`
+  extensions, no bare specifiers, no `import.meta.glob`. That is what lets the same `js/` tree run
+  through Vite *and* straight from a static file server. Importing an npm package into `js/` would
+  break the unbuilt mode.
+- **Never hand a runtime-built image path to the browser.** Vite rewrites the `images/` URLs in
+  `index.html` to hashed `/assets/` names, so a path like `images/category-suv.png` coming from the
+  API 404s in the built site. `resolveVehicleImage()` in `js/modules/booking.js` works around this
+  by borrowing the already-resolved `src` from the matching category tile; reuse that approach for
+  any new API-supplied artwork.
+- **Dev data is a JSON file, not a database.** `server/store.js` writes bookings and subscribers to
+  `.data/db.json` (gitignored). Delete that file to reset state — but the server only reads it at
+  boot, so also restart the API (touching a file under `server/` is enough to trigger
+  `node --watch`).
+- **Tests inject their own store.** `createApp({ store: createStore() })` gives an isolated
+  in-memory store with no file persistence; that is why the suite never touches `.data/`.
+- Vitest runs in the `node` environment by default. DOM suites opt in with an
+  `@vitest-environment jsdom` docblock, and they load the *real* `index.html`, so renaming an id or
+  a `data-category` attribute will fail tests rather than silently break the page.
+
+### Deployment note
+
+GitHub Pages currently publishes the repository as-is, which still works (static content renders;
+the booking API simply reports itself unreachable). To ship a working booking flow, the built
+`dist/` output needs deploying to a host that can also run the Express server.
