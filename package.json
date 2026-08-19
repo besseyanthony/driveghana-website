@@ -1,0 +1,35 @@
+{
+  "name": "driveghana-website",
+  "version": "1.0.0",
+  "description": "DriveGhana — car rentals, chauffeur services and peer-to-peer ride sharing across Ghana.",
+  "type": "module",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "concurrently -n web,api -c cyan,magenta \"npm:dev:web\" \"npm:dev:api\"",
+    "dev:web": "vite",
+    "dev:api": "node --watch server/index.js",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "NODE_ENV=production node server/index.js",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "concurrently": "^10.0.5",
+    "eslint": "^10.8.1",
+    "globals": "^17.11.0",
+    "jsdom": "^29.1.1",
+    "supertest": "^7.2.2",
+    "vite": "^8.2.1",
+    "vitest": "^4.1.11"
+  }
+}

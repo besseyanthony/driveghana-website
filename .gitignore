@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local dev database written by server/store.js
+.data/
+
+# Test/coverage output
+coverage/
+
+# Logs & editor noise
+*.log
+npm-debug.log*
+.DS_Store
+.vite/
