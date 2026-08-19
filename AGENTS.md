@@ -32,10 +32,13 @@ serves the built frontend from `dist/`, making port 3001 self-sufficient. It req
 
 ### Gotchas worth knowing
 
-- **The API is optional at runtime.** Every fetch failure is caught and shown as a friendly status
-  message, because this repo is also published as plain static files to GitHub Pages (`.nojekyll`),
-  where no backend exists. Keep that graceful degradation intact — don't let a failed `/api` call
-  break the page.
+- **The API is optional at runtime.** This repo is also published as plain static files to GitHub
+  Pages (`.nojekyll`), where no backend exists, so every request failure degrades to a friendly
+  status message instead of a broken page. Note the specific rule in `js/api/client.js`: a static
+  host answers `/api/*` with its own **HTML** 404, so the fetch *succeeds* and only the non-JSON
+  body reveals that our API was never reached. Any non-JSON response is therefore reported as
+  "service unreachable" rather than as a bare status code. Endpoints must always answer with a JSON
+  body (no `204 No Content`) or the client will misread them as a missing backend.
 - **Frontend imports must stay natively resolvable**: relative paths with explicit `.js`
   extensions, no bare specifiers, no `import.meta.glob`. That is what lets the same `js/` tree run
   through Vite *and* straight from a static file server. Importing an npm package into `js/` would

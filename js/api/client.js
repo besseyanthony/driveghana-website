@@ -1,5 +1,8 @@
 // Thin fetch wrapper around the DriveGhana JSON API.
 
+const SERVICE_UNAVAILABLE =
+  "We can't reach the booking service right now. Please try again shortly.";
+
 export class ApiError extends Error {
   constructor(message, { status = 0, fields = {}, cause } = {}) {
     super(message, { cause });
@@ -30,19 +33,23 @@ async function request(path, { method = "GET", body, params, fetchImpl = globalT
       body: body ? JSON.stringify(body) : undefined,
     });
   } catch (cause) {
-    // The static site is also published to GitHub Pages, where no API exists.
-    throw new ApiError(
-      "We can't reach the booking service right now. Please try again shortly.",
-      { status: 0, cause },
-    );
+    throw new ApiError(SERVICE_UNAVAILABLE, { status: 0, cause });
   }
 
   const payload = await response.json().catch(() => null);
 
+  // Our API always answers with a JSON body, errors included. Anything else means the
+  // request never reached it — typically this build running on a static host (GitHub
+  // Pages) where `/api/*` just returns the host's own HTML 404 page. Report that as an
+  // unreachable service rather than leaking a bare status code to the visitor.
+  if (payload === null) {
+    throw new ApiError(SERVICE_UNAVAILABLE, { status: 0 });
+  }
+
   if (!response.ok) {
-    throw new ApiError(payload?.error?.message ?? `Request failed (${response.status}).`, {
+    throw new ApiError(payload.error?.message ?? `Request failed (${response.status}).`, {
       status: response.status,
-      fields: payload?.error?.fields ?? {},
+      fields: payload.error?.fields ?? {},
     });
   }
 
